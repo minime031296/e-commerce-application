@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "password": "John Doe",
+      "age": 30,
+      "location": "New York",
+      "token": "prehfhr489232"
+    }
+    
+  ]
+}

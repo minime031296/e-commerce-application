@@ -33,7 +33,7 @@ const Products = () => {
         dispatch({type: "LOADING"})
         try {
             let {data} = await axios({
-                baseURL: "http://localhost:3000/",
+                baseURL: "https://mocktodoserver.onrender.com/",
                 url: '/products',
                 method: "GET"
             })

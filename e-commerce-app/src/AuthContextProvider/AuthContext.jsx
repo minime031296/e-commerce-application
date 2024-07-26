@@ -19,7 +19,6 @@ const AuthContextProvider = ({children}) => {
   return (
     <AuthContext.Provider value = {{authContext, login, logout}}>
         {children}
-      
     </AuthContext.Provider>
   )
 }

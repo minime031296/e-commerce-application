@@ -31,16 +31,16 @@ const ProductDetail = () => {
         error: false,
         data: {}
     });
-    const { cartState, cartDispatch } = useContext(CartContext)
+    const { cartState, cartDispatch } = useContext(CartContext);
     const [images, setImages] = useState([]);
-    
+
     useEffect(() => {
         const fetchData = async () => {
             dispatch({ type: "LOADING" });
             try {
-                const response = await axios.get(`http://localhost:3000/products/${product_id}`);
+                const response = await axios.get(`https://mocktodoserver.onrender.com/products/${product_id}`);
                 dispatch({ type: "SUCCESS", payload: response.data });
-                setImages(response.data.images);
+                setImages(response.data.images || []);
             } catch (error) {
                 dispatch({ type: "ERROR" });
             }
@@ -60,28 +60,38 @@ const ProductDetail = () => {
     }
 
     const handleAddtoCart = () => {
-        cartDispatch({ type: "ADD_TO_CART", payload: data })
+        cartDispatch({ type: "ADD_TO_CART", payload: data });
     }
 
     const handleRemovetoCart = () => {
-        cartDispatch({ type: "REMOVE_FROM_CART", payload: null })
+        cartDispatch({ type: "REMOVE_FROM_CART", payload: data });
     }
 
     const { price, description, title, rating, category, brand } = data;
 
     return (
         <Flex flexDirection='column' alignItems="center" justifyContent="center" padding="20px">
-            <Grid templateColumns={['1fr', '1fr 1fr']} gap={4} alignItems="center" justifyContent="center">
+            <Grid 
+                templateColumns={['1fr', '1fr 1fr']} 
+                gap={4} 
+                alignItems="center" 
+                justifyContent="center"
+                w='100%'
+            >
                 <GridItem>
-                    <AutoplaySlider
-                        play={true}
-                        cancelOnInteraction={false} 
-                        interval={6000}
-                    >
-                        {images.map((img, index) => (
-                            <div key={index} data-src={img} />
-                        ))}
-                    </AutoplaySlider>
+                    {images.length > 0 ? (
+                        <AutoplaySlider
+                            play={true}
+                            cancelOnInteraction={false} 
+                            interval={6000}
+                        >
+                            {images.map((img, index) => (
+                                <div key={index} data-src={img} />
+                            ))}
+                        </AutoplaySlider>
+                    ) : (
+                        <Box>No images available</Box>
+                    )}
                 </GridItem>
                 <GridItem>
                     <Stack spacing={4}>

@@ -46,7 +46,7 @@ const Login = () => {
         event.preventDefault();
         try {
             const { data } = await axios({
-                url:  "http://localhost:8080/users/",
+                url:  "https://reqres.in/api/login",
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"

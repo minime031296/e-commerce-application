@@ -32,7 +32,7 @@ const UserInfo = () => {
     const fetchUserData = async () => {
         userDispatch({ type: "LOADING" });
         try {
-            const { data } = await axios.get("http://localhost:8080/users");
+            const { data } = await axios.get("https://reqres.in/api/login");
             userDispatch({ type: "SUCCESS", payload: data });
         } catch (error) {
             userDispatch({ type: "ERROR" });

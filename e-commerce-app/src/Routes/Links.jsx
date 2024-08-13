@@ -9,7 +9,7 @@ const Links = () => {
       <Link to='/'>Home</Link>
       <Link to='/login'>Login</Link>
       <Link to='/products'>Products</Link>
-      <Link to='/shoppingcart'></></Link>
+      <Link to='/shoppingcart'></Link>
     </Box>
   )
 }

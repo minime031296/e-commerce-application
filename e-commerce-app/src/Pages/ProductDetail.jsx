@@ -1,4 +1,4 @@
-import { Box, Stack, Badge, Button, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Stack, Badge, Button, Flex, Grid, GridItem} from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import Loading from '../Component/Loading';
@@ -8,6 +8,7 @@ import { CartContext } from './cart_context';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
+
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -61,10 +62,11 @@ const ProductDetail = () => {
 
     const handleAddtoCart = () => {
         cartDispatch({ type: "ADD_TO_CART", payload: data });
+        alert('Product got added')
     }
-
     const handleRemovetoCart = () => {
         cartDispatch({ type: "REMOVE_FROM_CART", payload: data });
+        alert("Product got removed")
     }
 
     const { price, description, title, rating, category, brand } = data;
